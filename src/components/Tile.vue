@@ -1,8 +1,8 @@
 <template>
   <div class="tile" @click="open()">
-    <img v-if="img === 'worm'" src="../assets/worm.jpg" :alt="'Tile ' + nr" width="100%" height="100%">
-    <img v-else-if="img === 'tile'" src="../assets/tile.jpg" :alt="'Tile ' + nr" width="100%" height="100%">
-    <img v-else-if="img === 'red-cross'" src="../assets/red-cross.png" :alt="'Tile ' + nr" width="100%" height="100%">
+    <img src="../assets/worm.jpg" :alt="'Tile ' + nr"  :class="{ img, hide: !showImg('worm') }">
+    <img src="../assets/tile.jpg" :alt="'Tile ' + nr"  :class="{ img, hide: !showImg('tile') }">
+    <img src="../assets/red-cross.png" :alt="'Tile ' + nr" :class="{ img, hide: !showImg('red-cross') }">
   </div>
 </template>
 
@@ -31,11 +31,21 @@ export default {
     open () {
       this.$store.dispatch('tryTile', this.nr)
     },
+    showImg (img) {
+      return img === this.img
+    },
   },
 }
 </script>
 
 <style scoped>
+.img {
+  width: 100%;
+  height: 100%;
+}
+.hide {
+  display: none;
+}
 .tile {
   display: inline-block;
   width: 6rem;
