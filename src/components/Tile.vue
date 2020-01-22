@@ -1,5 +1,5 @@
 <template>
-  <div class="tile" @click="open()">
+  <div class="tile" @click="open">
     <img src="../assets/worm.jpg" alt="Worm" class="tile-img" :class="{ hide: !showImg('worm') }">
     <img src="../assets/tile.jpg" alt="Tile" class="tile-img" :class="{ hide: !showImg('tile') }">
     <img src="../assets/nope.png" alt="Nope" class="tile-img" :class="{ hide: !showImg('nope') }">

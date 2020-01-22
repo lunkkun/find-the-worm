@@ -4,8 +4,11 @@
     <button class="options" @click="toggleShowOptions">
       <span v-if="!showOptions">Show possible locations</span>
       <span v-else>Hide possible locations</span>
-    </button><br>
-    <span>Turns taken: {{ turnsTaken }}</span><br>
+    </button>
+    <button class="undo" @click="undo" :class="{ disabled: !canUndo }">Undo</button>
+    <br>
+    <span>Turns taken: {{ turnsTaken }}</span>
+    <br>
     <span v-if="won">You won!</span>
   </div>
 </template>
@@ -17,6 +20,9 @@ export default {
     turnsTaken () {
       return this.$store.getters.turnsTaken
     },
+    canUndo () {
+      return this.$store.getters.canUndo
+    },
     won () {
       return this.$store.getters.won
     },
@@ -27,6 +33,9 @@ export default {
   methods: {
     reset () {
       this.$store.dispatch('reset')
+    },
+    undo () {
+      this.$store.dispatch('undo')
     },
     toggleShowOptions () {
       this.$store.commit('toggleShowOptions')
@@ -53,9 +62,20 @@ button:focus {
 button.reset {
   border-color: darkred;
   color: darkred;
+  background-color: lightgrey;
 }
 button.options {
   border-color: darkgreen;
   color: darkgreen;
+  background-color: lightgrey;
+}
+button.undo {
+  border-color: darkgreen;
+  color: darkgreen;
+  background-color: lightgrey;
+}
+button.disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 </style>

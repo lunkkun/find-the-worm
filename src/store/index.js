@@ -17,6 +17,9 @@ export default new Vuex.Store({
     turnsTaken: (state) => {
       return state.history.length
     },
+    canUndo: (state) => {
+      return state.history.length > 0
+    },
     won: (state) => {
       return state.opened === state.worm
     },
@@ -57,6 +60,7 @@ export default new Vuex.Store({
       state.history.push({
         worm: state.worm,
         opened: tile,
+        options: state.options,
       })
     },
     closeTile (state) {
@@ -122,6 +126,13 @@ export default new Vuex.Store({
         })
       })
       commit('setOptions', options)
+    },
+    undo ({ state, getters }) {
+      if (getters.canUndo) {
+        let previous = state.history.pop()
+        state.worm = previous.worm
+        state.options = previous.options
+      }
     },
   },
 })
