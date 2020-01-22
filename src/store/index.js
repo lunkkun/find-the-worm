@@ -85,7 +85,7 @@ export default new Vuex.Store({
               commit('closeTile')
               dispatch('moveWorm')
             },
-            timeout: 1000,
+            timeout: 600,
           })
         }
       }
