@@ -1,8 +1,8 @@
 <template>
   <div class="tile" @click="open()">
-    <img src="../assets/worm.jpg" :alt="'Tile ' + nr"  :class="{ img, hide: !showImg('worm') }">
-    <img src="../assets/tile.jpg" :alt="'Tile ' + nr"  :class="{ img, hide: !showImg('tile') }">
-    <img src="../assets/red-cross.png" :alt="'Tile ' + nr" :class="{ img, hide: !showImg('red-cross') }">
+    <img src="../assets/worm.jpg" :alt="'Tile ' + nr" :class="{ hide: !showImg('worm') }">
+    <img src="../assets/tile.jpg" :alt="'Tile ' + nr" :class="{ hide: !showImg('tile') }">
+    <img src="../assets/red-cross.png" :alt="'Tile ' + nr" :class="{ hide: !showImg('red-cross') }">
   </div>
 </template>
 
@@ -39,23 +39,18 @@ export default {
 </script>
 
 <style scoped>
-.img {
+.tile {
+  display: inline-block;
+  width: 6rem;
+  height: 6rem;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+img {
   width: 100%;
   height: 100%;
 }
 .hide {
   display: none;
-}
-.tile {
-  display: inline-block;
-  width: 6rem;
-  height: 6rem;
-  line-height: 6rem;
-  text-align: center;
-  vertical-align: bottom;
-  font-size: 1rem;
-  border: thin solid grey;
-  margin: 0.2rem;
-  cursor: pointer;
 }
 </style>

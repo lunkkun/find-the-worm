@@ -1,6 +1,6 @@
 <template>
   <div class="panel">
-    <button class="button" @click="reset">Reset</button><br>
+    <button @click="reset">Reset</button><br>
     <span>Turns taken: {{ turnsTaken }}</span><br>
     <span v-if="won">You won!</span>
   </div>
@@ -29,7 +29,7 @@ export default {
 .panel {
   margin-top: 1rem;
 }
-.button {
+button {
   background-color: darkred;
   border: none;
   color: white;
@@ -38,5 +38,8 @@ export default {
   display: inline-block;
   cursor: pointer;
   margin-bottom: 0.5rem;
+}
+button:focus {
+  outline:0;
 }
 </style>
