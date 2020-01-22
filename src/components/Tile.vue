@@ -1,8 +1,9 @@
 <template>
   <div class="tile" @click="open()">
-    <img src="../assets/worm.jpg" :alt="'Tile ' + nr" :class="{ hide: !showImg('worm') }">
-    <img src="../assets/tile.jpg" :alt="'Tile ' + nr" :class="{ hide: !showImg('tile') }">
-    <img src="../assets/red-cross.png" :alt="'Tile ' + nr" :class="{ hide: !showImg('red-cross') }">
+    <img src="../assets/worm.jpg" alt="Worm" class="tile-img" :class="{ hide: !showImg('worm') }">
+    <img src="../assets/tile.jpg" alt="Tile" class="tile-img" :class="{ hide: !showImg('tile') }">
+    <img src="../assets/nope.png" alt="Nope" class="tile-img" :class="{ hide: !showImg('nope') }">
+    <img src="../assets/option.png" alt="The worm could be here!" class="overlay-img" :class="{ hide: !showAsOption }">
   </div>
 </template>
 
@@ -21,10 +22,13 @@ export default {
     },
     img () {
       if (this.opened) {
-        return this.hasWorm ? 'worm' : 'red-cross'
+        return this.hasWorm ? 'worm' : 'nope'
       } else {
         return 'tile'
       }
+    },
+    showAsOption () {
+      return this.$store.state.showOptions && this.$store.getters.isOption(this.nr)
     },
   },
   methods: {
@@ -45,10 +49,18 @@ export default {
   height: 6rem;
   margin: 0.2rem;
   cursor: pointer;
+  position: relative;
 }
-img {
+.tile-img {
   width: 100%;
   height: 100%;
+}
+.overlay-img {
+  position: absolute;
+  right: 0;
+  width: 30%;
+  height: 30%;
+  padding: 0.5rem;
 }
 .hide {
   display: none;
