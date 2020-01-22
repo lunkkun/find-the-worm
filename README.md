@@ -1,4 +1,4 @@
-# find-the-worm
+# Find the worm!
 
 ## Project setup
 ```
