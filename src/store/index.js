@@ -127,11 +127,15 @@ export default new Vuex.Store({
       })
       commit('setOptions', options)
     },
-    undo ({ state, getters }) {
+    undo ({ state, getters, commit }) {
       if (getters.canUndo) {
+        // interrupt normal flow
+        commit('clearTimeouts')
+        commit('closeTile')
+        // set previous
         let previous = state.history.pop()
-        state.worm = previous.worm
-        state.options = previous.options
+        commit('setWorm', previous.worm)
+        commit('setOptions', previous.options)
       }
     },
   },
