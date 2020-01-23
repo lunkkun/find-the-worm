@@ -1,5 +1,5 @@
 <template>
-  <div class="tile" @click="open">
+  <div class="tile" :class="{ blocked: blocked }" @click="open">
     <img src="../assets/worm.jpg" alt="Worm" class="tile-img" :class="{ hide: !showImg('worm') }">
     <img src="../assets/tile.jpg" alt="Tile" class="tile-img" :class="{ hide: !showImg('tile') }">
     <img src="../assets/nope.png" alt="Nope" class="tile-img" :class="{ hide: !showImg('nope') }">
@@ -29,6 +29,9 @@ export default {
     },
     showAsOption () {
       return this.$store.state.showOptions && this.$store.getters.isOption(this.nr)
+    },
+    blocked () {
+      return this.$store.getters.blocked
     },
   },
   methods: {
@@ -64,5 +67,8 @@ export default {
 }
 .hide {
   display: none;
+}
+.blocked {
+  cursor: default;
 }
 </style>
