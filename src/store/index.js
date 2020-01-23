@@ -17,8 +17,8 @@ export default new Vuex.Store({
     turnsTaken: (state) => {
       return state.history.length
     },
-    canUndo: (state) => {
-      return state.history.length > 0
+    canUndo: (state, getters) => {
+      return !getters.won && state.history.length > 0
     },
     won: (state) => {
       return state.opened === state.worm
