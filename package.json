@@ -1,6 +1,6 @@
 {
   "name": "find-the-worm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -25,6 +25,7 @@
     "chai": "^4.1.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "minimist": ">=1.2.3",
     "vue-template-compiler": "^2.6.10"
   }
 }
